@@ -114,8 +114,9 @@ module UvdParser
 								p.save
 								sleep 0.01
 								puts "Save success"
-							rescue
+							rescue => e
 								puts "Save Fail"
+								puts e
 							end
 						end
 					end
