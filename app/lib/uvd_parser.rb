@@ -29,7 +29,7 @@ module UvdParser
 				puts "Now working on a vehicle"
 				vehicle = Vehicle.where( stock: vehicle_attrs["stock"] ).first_or_create
 				vehicle_attrs.each do |key, value|
-					vehicle.send("#{key}=", mapped_value(key, value))
+					vehicle.send("#{key}=", mapped_value(key, value)) if vehicle.respond_to? key
 				end
 				vehicle.save
 				puts "Saved vehicle #{vehicle.id}"
