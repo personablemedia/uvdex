@@ -11,7 +11,6 @@
 #= require_tree ./controllers
 #= require_tree ./views
 #= require_tree ./helpers
-#= require_tree ./components
 #= require ./router
 
 # for more details see: http://emberjs.com/guides/application/
