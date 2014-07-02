@@ -112,6 +112,7 @@ module UvdParser
 								p.google_drive_file_name = photo.title
 								p.photo = StringIO.new(photo.download_to_string)
 								p.save
+								puts p.errors.messages unless p.valid?
 								sleep 0.01
 								puts "Save success"
 							rescue => e
