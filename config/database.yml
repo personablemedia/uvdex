@@ -1,0 +1,21 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: uvd_v1_development
+  pool: 5
+  username: tyrel
+  password: SQL_BuddhA024878
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: uvd_v1_test
+  pool: 5
+  username: tyrel
+  password: SQL_BuddhA024878
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: uvd_v1_production
+  pool: 5
+  username: root
+  password: SQL_BuddhA024878

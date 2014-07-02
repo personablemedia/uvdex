@@ -1,0 +1,266 @@
+@import 'foundation_and_overrides';
+@import 'royalslider';
+@import 'rs-default';
+
+$header_height: 243px;
+$header_height_small: 96px;
+header {
+	background-color: #0051A6;
+	border-bottom: 3px solid black;
+	height: header_height;
+	@media only screen and (max-width: 40em) {
+		height: $header_height_small;
+	}
+	.row {
+		$header_padding: 20px;
+		padding-top: $header_padding;
+		padding-bottom: $header_padding;
+		.logo {
+			text-align: center;
+			img {
+				@media only screen and (max-width: 40em) {
+					height: 90px;
+				}
+			}
+		}
+	}
+}
+
+main {
+	margin-top: $header_height;
+	@media only screen and (max-width: 40em) {
+		margin-top: $header_height_small;
+	}
+	padding-top: 20px;
+}
+
+a {
+	color: black;
+	&:hover {
+		color: black;
+	}
+}
+.vehicle_index_instance {
+	border: 2px solid #CFCFCF;
+	padding: 10px;
+	margin-bottom: 20px;
+	text-align: center;
+	min-height: 490px;
+	.make_model {
+		text-align: center;
+		font-size: 30px;
+		font-weight: bold;
+		text-decoration: underline;
+		margin-bottom: 10px;
+		min-height: 70px;
+	}
+	.new_used {
+		font-size: 22px;
+		font-weight: bold;
+		.new {
+			color: #0051A6;
+		}
+		.used {
+			color: #50a600;
+		}
+	}
+	.photo {
+		text-align: center;
+		img {
+			border: 1px solid #CFCFCF;
+		}
+		margin-bottom: 10px;
+	}
+	.text {
+		margin-bottom: 5px;
+		font-size: 20px;
+	}
+	.msrp {
+		text-decoration: line-through;
+	}
+	.price {
+		font-weight: bold;
+	}
+	&:hover {
+		border: 2px solid #0051A6;
+		cursor: pointer;
+	}
+}
+
+button.filter {
+	border: 3px solid white;
+	&.active {
+		border: 3px solid black;
+	}
+}
+
+.filters {
+	.row {
+		padding: 0px;
+	}
+	.heading {
+		span {
+			position: relative;
+			top: 20px;
+			font-size: 20px;
+			font-weight: bold;
+		}
+	}
+	.budget_filter {
+		text-align: center;
+		span {
+			position: relative;
+			top: 20px;
+			font-size: 20px;
+			font-weight: bold;
+			&.low {
+				float: left;
+			}
+			&.high {
+				float: right;
+			}
+		}
+		input {
+			position: relative;
+			top: 20px;
+		}
+	}
+	button.passenger_select {
+		padding: 10px;
+		position: relative;
+		top: 10px;
+		margin-right: 10px;
+	}
+	.passengers {
+		text-align: center;
+	}
+	color: white;
+}
+
+.vehicle_show {
+	.main_image {
+		padding: 3px;
+		border: 3px solid black;
+	}
+	.title {
+		text-decoration: underline;
+	}
+}
+
+.vehicle_show_actions {
+	padding-top: 20px;
+	text-align: center;
+	button {
+		margin-bottom: 10px;
+	}
+}
+
+.royalSlider {
+  width: 100%;
+}
+
+.back_link {
+	font-size: 20px;
+	font-weight: bold;
+	padding-left: 30px;
+	margin-bottom: 30px;
+}
+
+.vehicle_show_details {
+	.title {
+		font-size: 22px;
+		text-decoration: underline;
+		font-weight: bold;
+		margin-bottom: 10px;
+	}
+	.text {
+		font-size: 20px;
+		margin-bottom: 5px;
+	}
+	.price {
+		margin-top: 20px;
+		font-size: 42px;
+		color: #0051A6;
+	}
+}
+
+$footer_height: 90px;
+footer {
+	border-top: 3px solid black;
+	&.custom_fixed {
+		bottom: 0 !important;
+		width: 100%;
+		left: 0;
+		position: fixed;
+		z-index: 99;
+	}
+	background-color: #0051A6;
+	border-bottom: 3px solid black;
+	height: $footer_height;
+	.row {
+		$footer_padding: 20px;
+		padding-top: $footer_padding;
+		padding-bottom: $footer_padding;
+		.logo {
+			text-align: center;
+			img {
+				@media only screen and (max-width: 40em) {
+					height: 90px;
+				}
+			}
+		}
+	}
+	.small-12.columns {
+		text-align: center;
+		.link {
+			display: inline-block;
+			margin-right: 15px;
+			img {
+				width: 50px;
+			}
+		}
+	}
+}
+
+.mobile_header_container {
+	padding: 0px !important;
+}
+
+.mobile_header {
+	padding: 0px !important;
+	.menu_link {
+		position: relative;
+		top: 10px;
+		&:hover {
+			cursor: pointer;
+		}
+	}
+	h1 {
+		color: white;
+		font-weight: bold;
+		position: relative;
+		font-size: 30px;
+		top: 20px;
+		left: 25px
+	}
+}
+
+.mobile_nav {
+	position: relative;
+	top: 10px;
+	background-color: #0051A6;
+	border-top: 3px solid black;
+	border-bottom: 3px solid black;
+	padding-top: 20px;
+	padding-bottom: 50px;
+	.heading {
+		padding-top: 5px;
+		padding-bottom: 5px;
+		text-align: center;
+		font-size: 18px;
+	}
+}
+
+#small_header {
+	padding: 0px;
+}
