@@ -6,7 +6,6 @@
 #= require jquery.royalslider.min
 #= require_self
 #= require uvdlib
-#= require uvd_v1
 
 # for more details see: http://emberjs.com/guides/application/
 window.UvdV1 = Ember.Application.create()
