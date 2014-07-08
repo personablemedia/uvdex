@@ -16,8 +16,8 @@ UvdV1.VehiclesController = Ember.ArrayController.extend(
 			else if condition == "NEW"
 				keep = false unless vehicle.get('is_used') == false
 
-			unless max_price == 50000
-				keep = false unless vehicle.get('price') <= max_price
+			unless max_price == 60000
+				keep = false unless parseFloat(vehicle.get('price')) <= max_price
 
 			unless num_of_passengers == "ALL"
 				keep = false unless vehicle.get('passengers') >= num_of_passengers
