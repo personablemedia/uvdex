@@ -20,7 +20,7 @@ UvdV1.VehiclesController = Ember.ArrayController.extend(
 				keep = false unless vehicle.get('price') <= max_price
 
 			unless num_of_passengers == "ALL"
-				keep = false unless vehicle.get('passengers') == num_of_passengers
+				keep = false unless vehicle.get('passengers') >= num_of_passengers
 			keep
 		)
 	).property('conditionToFilterFor', 'dollarMax', 'numberOfPassengers', 'model.isLoaded')

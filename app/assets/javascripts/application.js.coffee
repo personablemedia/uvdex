@@ -4,6 +4,7 @@
 #= require ember-data
 #= require jquery.truncate
 #= require jquery.royalslider.min
+#= require jquery.sticky
 #= require uvdlib
 #= require_self
 #= require ./store

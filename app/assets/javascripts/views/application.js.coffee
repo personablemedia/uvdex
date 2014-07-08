@@ -8,6 +8,7 @@ UvdV1.ApplicationView = Ember.View.extend(
 		$(".menu_link").click( ->
 			$(".mobile_nav").toggle()
 		)
+		$("#sticker").sticky({topSpacing:0})
 )
 
 UvdV1.VehicleView = Ember.View.extend(

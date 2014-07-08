@@ -1,35 +1,59 @@
 %script(type="text/x-handlebars")
-	%header.fixed
+	%header.hide-for-small
 		.row.hide-for-small
-			.small-12.large-6.columns.logo
+			.small-3.small-centered.columns.logo
 				= hb "link-to 'vehicles'" do
 					= image_tag "logo.png"
-			.small-12.large-6.columns.filters
-				.row
-					.small-12.large-3.columns.heading
-						%span Condition
-					.small-12.large-3.columns
-						%button.filter.active{ _action: "setConditionFilter 'BOTH'" } Both
-					.small-12.large-3.columns
-						%button.filter{ _action: "setConditionFilter 'NEW'" } New
-					.small-12.large-3.columns
-						%button.filter{ _action: "setConditionFilter 'USED'" } Used
-				.row
-					.small-12.large-3.columns.heading
-						%span Passengers
-					.small-12.large-9.columns.passengers
-						%button.passenger_select.filter.active{ _action: "setPassengers 'ALL'" } All
-						%button.passenger_select.filter{ _action: "setPassengers 2" } 2
-						%button.passenger_select.filter{ _action: "setPassengers 4" } 4
-						%button.passenger_select.filter{ _action: "setPassengers 5" } 5
-						%button.passenger_select.filter{ _action: "setPassengers 7" } 7
-				.row
-					.small-12.large-3.columns.heading
-						%span Budget
-					.small-12.large-9.columns.budget_filter
-						%span.low $10,000
-						= hb "input type='range' min=1000 max=5000 valueBinding='maxPrice'"
-						%span.high $50,000
+		#sticker
+			.row.hide-for-small
+				.small-3.columns.filters
+					.row
+						.small-12.columns.heading Condition
+					.row
+						.small-12.columns
+							%button.filter.full.active{ _action: "setConditionFilter 'BOTH'" } Any
+					.row
+						.small-6.columns
+							%button.filter.full{ _action: "setConditionFilter 'NEW'" } New
+						.small-6.columns
+							%button.filter.full{ _action: "setConditionFilter 'USED'" } Used
+				.small-3.columns.filters
+					.row
+						.small-12.columns.heading Passengers
+					.row
+						.small-12.columns
+							%button.passenger_select.full.filter.active{ _action: "setPassengers 'ALL'" } Any
+					.row
+						.small-4.columns
+							%button.passenger_select.filter.full{ _action: "setPassengers 4" } 4
+						.small-4.columns
+							%button.passenger_select.filter.full{ _action: "setPassengers 5" } 5
+						.small-4.columns
+							%button.passenger_select.filter.full{ _action: "setPassengers 6" } 6
+				.small-3.columns.filters
+					.row
+						.small-12.heading Budget
+					.row
+						.small-12.columns#current_budget {{ maxPriceDollarString }}
+					.row
+						.small-12.columns.budget_filter
+							%span.low $10
+							= hb "input type='range' min=10000 max=60000 valueBinding='maxPrice'"
+							%span.high $60
+				.small-3.columns.filters.actions
+					.row
+						.small-12.heading Actions
+					.row
+						.small-12.columns
+							= hb "link-to 'vehicles'" do
+								%button.full Refresh
+						.small-12.columns
+							= link_to "http://rostmotor.com/finance-application/" do
+								%button.full Get Financing
+						.small-12.columns
+							= link_to "http://rostmotor.com/trade-in/" do
+								%button.full Value Trade
+	%header.show-for-small.fixed
 		.row.show-for-small#small_header
 			.small-12.large-6.columns.mobile_header_container
 				.row.mobile_header
@@ -42,47 +66,47 @@
 				.row
 					.small-12.columns.heading Condition
 					.small-4.columns
-						%button.filter.active{ _action: "setConditionFilter 'BOTH'" } Both
+						%button.filter.active.full{ _action: "setConditionFilter 'BOTH'" } Any
 					.small-4.columns
-						%button.filter{ _action: "setConditionFilter 'NEW'" } New
+						%button.filter.full{ _action: "setConditionFilter 'NEW'" } New
 					.small-4.columns
-						%button.filter{ _action: "setConditionFilter 'USED'" } Used
+						%button.filter.full{ _action: "setConditionFilter 'USED'" } Used
 				.row
 					.small-12.columns.heading Passengers
 					.small-12.large-9.columns.passengers
-						%button.passenger_select.filter.active{ _action: "setPassengers 'ALL'" } All
-						%button.passenger_select.filter{ _action: "setPassengers 2" } 2
+						%button.passenger_select.filter.active{ _action: "setPassengers 'ALL'" } Any
 						%button.passenger_select.filter{ _action: "setPassengers 4" } 4
 						%button.passenger_select.filter{ _action: "setPassengers 5" } 5
-						%button.passenger_select.filter{ _action: "setPassengers 7" } 7
+						%button.passenger_select.filter{ _action: "setPassengers 6" } 6
 				.row
 					.small-12.columns.heading Budget
 					.small-12.columns.budget_filter
-						%span.low $10,000
-						= hb "input type='range' min=1000 max=5000 valueBinding='maxPrice'"
-						%span.high $50,000
+						.row
+							.small-2.columns $10
+							.small-8.columns#current_budget {{ maxPriceDollarString }}
+							.small-2.columns $60
+						.row
+							.small-12.columns
+								= hb "input type='range' min=1000 max=60000 valueBinding='maxPrice'"
 					
 	%main
 		.row
 			.small-12.columns.main_content_container
 				{{outlet}}
 
-	%footer.custom_fixed
+	%footer.custom_fixed.show-for-small
 		.row
 			.small-12.columns
-				%a(href='https://www.facebook.com/rostmotors')
-					.link= image_tag "facebook.png"
-				%a(href='https://www.twitter.com/rostmotor')
-					.link= image_tag "twitter.png"
 				%a(href="https://www.google.com/maps/place/1109+10th+Ave/@42.5287409,-94.535112,17z/data=!3m1!4b1!4m2!3m1!1s0x87f2836f14be18ff:0x224dabad34ecf597" target="_blank")
-					.link= image_tag "map.png"
+					.link= image_tag "nav.png"
 				%a(href="tel:7124693383")
 					.link= image_tag "phone.png"
+				%a(href="http://rostmotor.com/finance-application/")
+					.link= image_tag "money.png"
+				%a(href="http://rostmotor.com/")
+					.link= image_tag "back.png"
 
 %script(type='text/x-handlebars' data-template-name='vehicles')
-	.row
-		.small-12.columns.back_link
-			%a(href="http://rostmotor.com")= "<< Back To Site"
 	= hb 'each vehicle in controller.filteredContent' do
 		= hb 'if isStartOfRow cols=2' do
 			<div class="row">

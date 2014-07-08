@@ -3,13 +3,21 @@
 @import 'rs-default';
 
 $header_height: 243px;
-$header_height_small: 96px;
+$header_height_small: 70px;
 header {
 	background-color: #0051A6;
 	border-bottom: 3px solid black;
 	height: header_height;
 	@media only screen and (max-width: 40em) {
 		height: $header_height_small;
+	}
+	#sticker {
+		width: 100%;
+		background-color: #0051A6;
+		z-index: 99;
+		.row {
+			margin: auto;
+		}
 	}
 	.row {
 		$header_padding: 20px;
@@ -24,13 +32,25 @@ header {
 			}
 		}
 	}
+	.row.hide-for-small {
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+	button {
+		$verticle-padding: 5px;
+		$horizontal-padding: 15px;
+		padding-top: $verticle-padding;
+		padding-bottom: $verticle-padding;
+		padding-left: $horizontal-padding;
+		padding-right: $horizontal-padding;
+		font-size: 17px;
+		&.full {
+			width: 100%;
+		}
+	}
 }
 
 main {
-	margin-top: $header_height;
-	@media only screen and (max-width: 40em) {
-		margin-top: $header_height_small;
-	}
 	padding-top: 20px;
 }
 
@@ -99,18 +119,25 @@ button.filter {
 		padding: 0px;
 	}
 	.heading {
-		span {
-			position: relative;
-			top: 20px;
-			font-size: 20px;
-			font-weight: bold;
+		margin-bottom: 30px;
+		text-align: center;
+		font-size: 20px;
+		font-weight: bold;
+	}
+	&.actions {
+		.heading {
+			margin-bottom: 10px;
 		}
+	}
+	#current_budget {
+		font-weight: bold;
+		text-align: center;
 	}
 	.budget_filter {
 		text-align: center;
 		span {
-			position: relative;
-			top: 20px;
+			position: absolute;
+			top: 42px;
 			font-size: 20px;
 			font-weight: bold;
 			&.low {
@@ -121,15 +148,14 @@ button.filter {
 			}
 		}
 		input {
+			width: 80%;
 			position: relative;
-			top: 20px;
+			left: 8%;
+			top: 15px;
+			@media only screen and (max-width: 40em) { 
+				left: 2%;
+			}
 		}
-	}
-	button.passenger_select {
-		padding: 10px;
-		position: relative;
-		top: 10px;
-		margin-right: 10px;
 	}
 	.passengers {
 		text-align: center;
@@ -184,7 +210,7 @@ button.filter {
 	}
 }
 
-$footer_height: 90px;
+$footer_height: 50px;
 footer {
 	border-top: 3px solid black;
 	&.custom_fixed {
@@ -198,7 +224,7 @@ footer {
 	border-bottom: 3px solid black;
 	height: $footer_height;
 	.row {
-		$footer_padding: 20px;
+		$footer_padding: 10px;
 		padding-top: $footer_padding;
 		padding-bottom: $footer_padding;
 		.logo {
@@ -216,7 +242,7 @@ footer {
 			display: inline-block;
 			margin-right: 15px;
 			img {
-				width: 50px;
+				width: 30px;
 			}
 		}
 	}
@@ -231,6 +257,9 @@ footer {
 	.menu_link {
 		position: relative;
 		top: 10px;
+		img {
+			width: 50px;
+		}
 		&:hover {
 			cursor: pointer;
 		}
@@ -239,7 +268,7 @@ footer {
 		color: white;
 		font-weight: bold;
 		position: relative;
-		font-size: 30px;
+		font-size: 20px;
 		top: 20px;
 		left: 25px
 	}
@@ -247,22 +276,28 @@ footer {
 
 .mobile_nav {
 	position: relative;
-	top: 10px;
+	top: 15px;
 	background-color: #0051A6;
 	border-top: 3px solid black;
 	border-bottom: 3px solid black;
-	padding-top: 20px;
-	padding-bottom: 50px;
+	padding-top: 0px;
+	padding-bottom: 20px;
 	.heading {
 		padding-top: 5px;
 		padding-bottom: 5px;
 		text-align: center;
 		font-size: 18px;
+		@media only screen and (max-width: 40em) {
+			font-size: 12px;
+		}
 	}
 }
 
 #small_header {
 	padding: 0px;
+	.heading {
+		margin-bottom: 5px;
+	}
 }
 
 .main_content_container {
