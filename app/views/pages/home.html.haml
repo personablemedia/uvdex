@@ -64,7 +64,10 @@
 						.menu_link= image_tag "menu.png"
 			.small-12.large-6.columns.filters.mobile_nav(style='display:none;')
 				.row
-					.small-12.columns.heading Condition
+					.small-12.columns
+						= hb "link-to 'vehicles'" do
+							%button.full Refresh
+				.row
 					.small-4.columns
 						%button.filter.active.full{ _action: "setConditionFilter 'BOTH'" } Any
 					.small-4.columns
@@ -79,7 +82,6 @@
 						%button.passenger_select.filter{ _action: "setPassengers 5" } 5
 						%button.passenger_select.filter{ _action: "setPassengers 6" } 6
 				.row
-					.small-12.columns.heading Budget
 					.small-12.columns.budget_filter
 						.row
 							.small-2.columns $10
@@ -128,9 +130,6 @@
 	= hb 'each photo in vehicle_photos' do
 		%gallery_image{ bind: {src: "photo.large_url", rstmb: "photo.thumb_url" }} 
 	.row.vehicle_show
-		.row
-			.small-12.columns.back_link
-				%a(href="/#")= "<< Back To Vehicles"
 		.small-12.large-8.columns
 			.row
 				.small-12.columns

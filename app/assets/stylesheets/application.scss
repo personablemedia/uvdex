@@ -52,8 +52,10 @@ header {
 
 main {
 	padding-top: 20px;
+	@media only screen and (max-width: 40em) {
+		padding-top: 77px;
+	}
 }
-
 a {
 	color: black;
 	&:hover {
@@ -224,7 +226,7 @@ footer {
 	border-bottom: 3px solid black;
 	height: $footer_height;
 	.row {
-		$footer_padding: 10px;
+		$footer_padding: 7px;
 		padding-top: $footer_padding;
 		padding-bottom: $footer_padding;
 		.logo {
@@ -280,7 +282,7 @@ footer {
 	background-color: #0051A6;
 	border-top: 3px solid black;
 	border-bottom: 3px solid black;
-	padding-top: 0px;
+	padding-top: 10px;
 	padding-bottom: 20px;
 	.heading {
 		padding-top: 5px;
