@@ -9,6 +9,8 @@ RailsAdmin.config do |config|
   	'Update Vehicles' => "/vehicles/update"
 	}
 
+	config.included_models = [Vehicle, VehiclePhoto, User]
+
   config.actions do
     dashboard                     # mandatory
     index                         # mandatory
