@@ -25,6 +25,7 @@ UvdV1.Vehicle = DS.Model.extend(
 	top_photo_url: DS.attr('string')
 	published: DS.attr('string')
 	vehicle_photos: DS.hasMany('vehicle_photo')
+	car_truck: DS.attr('string')
 
 	featuresArray: (->
 		@get('features')
@@ -41,15 +42,24 @@ UvdV1.Vehicle = DS.Model.extend(
 	).property('make', 'model', 'year')
 
 	msrpAsDollar: (->
-		"Their Price: $#{UvdLib.numberWithCommas(parseFloat(@get('msrp')).toFixed(2).toLocaleString())}"
+		if @get('msrp') > 0
+			"Their Price: $#{UvdLib.numberWithCommas(parseFloat(@get('msrp')).toFixed(2).toLocaleString())}"
+		else
+			"Unknown"
 	).property('mrsp')
 
 	priceAsDollar: (->
-		"Our Price: $#{UvdLib.numberWithCommas(parseFloat(@get('price')).toFixed(2).toLocaleString())}"
+		if @get('price') > 0
+			"Our Price: $#{UvdLib.numberWithCommas(parseFloat(@get('price')).toFixed(2).toLocaleString())}"
+		else
+			"Our Price: Call for details"
 	).property('price')
 
 	priceAsDollarSikpPrefix: (->
-		"$#{UvdLib.numberWithCommas(parseFloat(@get('price')).toFixed(2).toLocaleString())}"
+		if @get('price') > 0
+			"$#{UvdLib.numberWithCommas(parseFloat(@get('price')).toFixed(2).toLocaleString())}"
+		else
+			"Call for Pricing"
 	).property('price')
 
 	new_used_class: (->

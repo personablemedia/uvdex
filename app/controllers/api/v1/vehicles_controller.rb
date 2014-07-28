@@ -12,7 +12,7 @@ class Api::V1::VehiclesController < ApplicationController
 		@vehicle_photos = VehiclePhoto.all
 		@vehicle_photos.map! do |p|
 			hash = p.attributes
-			hash[:large_url] = p.photo.url
+			hash[:large_url] = p.photo.url(:large)
 			hash[:thumb_url] = p.photo.url(:medium)
 			hash
 		end

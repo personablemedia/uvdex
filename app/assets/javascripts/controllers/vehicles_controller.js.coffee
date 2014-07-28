@@ -2,12 +2,14 @@ UvdV1.VehiclesController = Ember.ArrayController.extend(
 	conditionToFilterFor: "BOTH"
 	dollarMax: 50000
 	numberOfPassengers: "ALL"
+	typeOfVehicle: null
 
 	filteredContent: (->
 		model = @get('model')
 		condition = @get('conditionToFilterFor')
 		max_price = @get('dollarMax')
 		num_of_passengers = @get('numberOfPassengers')
+		type_of_vehicle = @get('typeOfVehicle')
 
 		model = model.filter((vehicle) ->
 			keep = true
@@ -19,11 +21,14 @@ UvdV1.VehiclesController = Ember.ArrayController.extend(
 			unless max_price == 60000
 				keep = false unless parseFloat(vehicle.get('price')) <= max_price
 
+			unless type_of_vehicle == null
+				keep = false unless vehicle.get('car_truck') == type_of_vehicle
+
 			unless num_of_passengers == "ALL"
 				keep = false unless vehicle.get('passengers') >= num_of_passengers
 			keep
 		)
-	).property('conditionToFilterFor', 'dollarMax', 'numberOfPassengers', 'model.isLoaded')
+	).property('conditionToFilterFor', 'dollarMax', 'typeOfVehicle', 'model.isLoaded')
 )
 
 GalleryController = Ember.ObjectController.extend(

@@ -14,8 +14,8 @@ UvdV1.ApplicationController = Ember.Controller.extend(
 	actions:
 		setConditionFilter: (condition) ->
 			@get('controllers.vehicles').set('conditionToFilterFor', condition)
-		setPassengers: (num_of_passengers) ->
-			@get('controllers.vehicles').set('numberOfPassengers', num_of_passengers)
+		setCarTypeFilter: (v_type) ->
+			@get('controllers.vehicles').set('typeOfVehicle', v_type)
 
 	maxPriceChanged: (->
 		@get('controllers.vehicles').set('dollarMax', @get('maxPrice'))

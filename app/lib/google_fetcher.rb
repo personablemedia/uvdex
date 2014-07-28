@@ -25,28 +25,12 @@ module GoogleFetcher
 			Rails.env == "production" ? "GA_BuddhA024878" : "GA_BuddhA024878"
 		end
 
-		def app_new_file_key
-			Rails.env == "production" ? "1dczU6UbCdCQkF0Rq1-IuTESxexq7XaTIyFMLOWsHmPM" : "1EDQgl4_3N-3LvjP2U0YH1M0LdkiXYcb1xVWe0cKGPAI"
+		def app_file_key
+			Rails.env == "production" ? "12k78BnyWkGCo59-11g_WLCKskagR5Zc8-tT6WDhwuY8" : "12k78BnyWkGCo59-11g_WLCKskagR5Zc8-tT6WDhwuY8"
 		end
 
-		def app_used_file_key
-			Rails.env == "production" ? "1EX5mZ0N1lGYV41v9XMwApfQ2-0A83IgEUHo-iTg9Wxw" : "1DqP7rCBw6DgK-V2Iv9V0t6Rh8yZJrL2Bs5et4v_coQ8"
-		end
-
-# 		def app_new_file_key
-# 			"1EDQgl4_3N-3LvjP2U0YH1M0LdkiXYcb1xVWe0cKGPAI"
-# 		end
-#
-# 		def app_used_file_key
-# 			"1DqP7rCBw6DgK-V2Iv9V0t6Rh8yZJrL2Bs5et4v_coQ8"
-# 		end
-
-		def new_car_array
-			GoogleFetcher::SpreadSheet.new(GoogleFetcher::app_new_file_key).as_array
-		end
-
-		def used_car_array
-			GoogleFetcher::SpreadSheet.new(GoogleFetcher::app_used_file_key).as_array
+		def car_array
+			GoogleFetcher::SpreadSheet.new(GoogleFetcher::app_file_key).as_array
 		end
 
 	end

@@ -2,10 +2,16 @@
 %html{ :lang => "en"}
 	%head
 		%meta{ :charset => "utf-8" }
-
 		%meta{ :name => "viewport", :content => "width=device-width, initial-scale=1.0" }
+		%meta{ name: "description", content: "Check out our selection of New Fords and Pre Owned vehicles. We deliver anywhere in the continental US. Call today 712-469-3383" }
 
-		%title= "Rost Moters Vehicle Search"
+		%meta{name: "og:image", content: asset_path("logo.png") }
+
+		%meta{name: "twitter:card", content: "summary"}
+		%meta{name: "twitter:url", content: request.url}
+		%meta{name: "twitter:image", content: asset_path("logo.png")}
+
+		%title= "Search New & Pre Owned Inventory at Rost Motor Inc!"
 
 		= stylesheet_link_tag "application"
 		= javascript_include_tag "vendor/modernizr"

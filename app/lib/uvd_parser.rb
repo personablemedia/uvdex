@@ -1,14 +1,10 @@
 module UvdParser
 	class << self
 		def update_vehicles
-			new_vehicles = GoogleFetcher::new_car_array
-			used_vehicles = GoogleFetcher::used_car_array
-			new_parser = UvdParser.new(new_vehicles)
-			used_parser = UvdParser.new(used_vehicles)
-
-			new_parser.write_vehicles_to_database( false )
-			used_parser.write_vehicles_to_database( true )
-			#Used to set published
+			vehicles_array = GoogleFetcher::car_array
+			parser = UvdParser.new(vehicles_array)
+			parser.write_vehicles_to_database
+			#Update published
 			Vehicle.all.each do |v|
 				v.save
 			end
@@ -22,7 +18,7 @@ module UvdParser
 			obtain_vehicle_attributes_from_array
 		end
 
-		def write_vehicles_to_database( is_used )
+		def write_vehicles_to_database
 			puts "Begining write of vehicle meta data"
 			current_vehicles = []
 			@vehicle_attributes.each do |vehicle_attrs|
@@ -37,7 +33,7 @@ module UvdParser
 			end
 			current_ids = current_vehicles.inject([]){|r,v| r << v.id}
 			
-			Vehicle.where(is_used: is_used).where.not(id: current_ids).destroy_all
+			Vehicle.where.not(id: current_ids).destroy_all
 			puts "removing old vehicles"
 			build_vehicle_photos
 		end

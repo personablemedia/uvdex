@@ -1,130 +1,141 @@
 %script(type="text/x-handlebars")
 	%header.hide-for-small
-		.row.hide-for-small
-			.small-3.small-centered.columns.logo
-				= hb "link-to 'vehicles'" do
-					= image_tag "logo.png"
+		#header_head
+			.row.hide-for-small
+				.small-3.columns.logo
+					= hb "link-to 'vehicles'" do
+						= image_tag "logo.png"
+				.small-9.columns#links
+					= link_to "http://rostmotor.com/" do
+						.link Home
+					= link_to "http://rostmotor.com/about-us/" do
+						.link About
+					= link_to "http://search.rostmotor.com/" do
+						.link.active Search
+					= link_to "http://rostmotor.com/finance/" do
+						.link Financing
+					= link_to "http://rostmotor.com/service-appointment/" do
+						.link Service
+					= link_to "http://rostmotor.com/contact-us/" do
+						.link Contact
 		#sticker
 			.row.hide-for-small
-				.small-3.columns.filters
-					.row
-						.small-12.columns.heading Condition
-					.row
-						.small-12.columns
-							%button.filter.full.active{ _action: "setConditionFilter 'BOTH'" } Any
+				.small-3.columns.filters.tp
 					.row
 						.small-6.columns
 							%button.filter.full{ _action: "setConditionFilter 'NEW'" } New
 						.small-6.columns
 							%button.filter.full{ _action: "setConditionFilter 'USED'" } Used
-				.small-3.columns.filters
-					.row
-						.small-12.columns.heading Passengers
-					.row
-						.small-12.columns
-							%button.passenger_select.full.filter.active{ _action: "setPassengers 'ALL'" } Any
+				.small-5.columns.filters.tp
 					.row
 						.small-4.columns
-							%button.passenger_select.filter.full{ _action: "setPassengers 4" } 4
+							%button.passenger_select.filter.full{ _action: "setCarTypeFilter 'CAR'" } CAR
 						.small-4.columns
-							%button.passenger_select.filter.full{ _action: "setPassengers 5" } 5
+							%button.passenger_select.filter.full{ _action: "setCarTypeFilter 'Truck'" } TRUCK
 						.small-4.columns
-							%button.passenger_select.filter.full{ _action: "setPassengers 6" } 6
-				.small-3.columns.filters
-					.row
-						.small-12.heading Budget
+							%button.passenger_select.filter.full{ _action: "setCarTypeFilter 'SUV'" } SUV
+				.small-4.columns.filters
 					.row
 						.small-12.columns#current_budget {{ maxPriceDollarString }}
 					.row
 						.small-12.columns.budget_filter
-							%span.low $10
-							= hb "input type='range' min=10000 max=60000 valueBinding='maxPrice'"
-							%span.high $60
-				.small-3.columns.filters.actions
-					.row
-						.small-12.heading Actions
-					.row
-						.small-12.columns
-							= hb "link-to 'vehicles'" do
-								%button.full Refresh
-						.small-12.columns
-							= link_to "http://rostmotor.com/finance-application/" do
-								%button.full Get Financing
-						.small-12.columns
-							= link_to "http://rostmotor.com/trade-in/" do
-								%button.full Value Trade
+							%span.low $10K
+							= hb "input type='range' min=10000 max=60000 step=5000 valueBinding='maxPrice'"
+							%span.high $60K
 	%header.show-for-small.fixed
 		.row.show-for-small#small_header
 			.small-12.large-6.columns.mobile_header_container
 				.row.mobile_header
 					.small-9.columns
 						= hb "link-to 'vehicles'" do
-							%h1 ROST MOTER INC
+							%h1 ROST MOTOR INC
 					.small-3.columns
 						.menu_link= image_tag "menu.png"
 			.small-12.large-6.columns.filters.mobile_nav(style='display:none;')
 				.row
-					.small-12.columns
-						= hb "link-to 'vehicles'" do
-							%button.full Refresh
-				.row
-					.small-4.columns
-						%button.filter.active.full{ _action: "setConditionFilter 'BOTH'" } Any
 					.small-4.columns
 						%button.filter.full{ _action: "setConditionFilter 'NEW'" } New
-					.small-4.columns
 						%button.filter.full{ _action: "setConditionFilter 'USED'" } Used
-				.row
-					.small-12.columns.heading Passengers
-					.small-12.large-9.columns.passengers
-						%button.passenger_select.filter.active{ _action: "setPassengers 'ALL'" } Any
-						%button.passenger_select.filter{ _action: "setPassengers 4" } 4
-						%button.passenger_select.filter{ _action: "setPassengers 5" } 5
-						%button.passenger_select.filter{ _action: "setPassengers 6" } 6
+					.small-8.large-9.columns.passengers
+						.row
+							.small-6.columns
+								%button.passenger_select.full.filter{ _action: "setCarTypeFilter 'CAR'" } CAR
+							.small-6.columns
+								%button.passenger_select.full.filter{ _action: "setCarTypeFilter 'SUV'" } SUV
+						.row
+							.small-12.columns
+								%button.passenger_select.full.filter{ _action: "setCarTypeFilter 'Truck'" } TRUCK
 				.row
 					.small-12.columns.budget_filter
 						.row
-							.small-2.columns $10
+							.small-2.columns $10K
 							.small-8.columns#current_budget {{ maxPriceDollarString }}
-							.small-2.columns $60
+							.small-2.columns $60K
 						.row
 							.small-12.columns
-								= hb "input type='range' min=10000 max=60000 valueBinding='maxPrice'"
+								= hb "input type='range' min=10000 max=60000 step=5000 valueBinding='maxPrice'"
 					
 	%main
 		.row
 			.small-12.columns.main_content_container
 				{{outlet}}
 
-	%footer.custom_fixed.show-for-small
+	%footer.custom_fixed
 		.row
 			.small-12.columns
-				%a(href="https://www.google.com/maps/place/1109+10th+Ave/@42.5287409,-94.535112,17z/data=!3m1!4b1!4m2!3m1!1s0x87f2836f14be18ff:0x224dabad34ecf597" target="_blank")
-					.link= image_tag "nav.png"
 				%a(href="tel:7124693383")
 					.link= image_tag "phone.png"
-				%a(href="http://rostmotor.com/finance-application/")
-					.link= image_tag "money.png"
-				%a(href="http://rostmotor.com/")
+				%a(href="mailto:josh@rostmotor.com")
+					.link= image_tag "mail.png"
+				%a#footer_back_link(href="http://rostmotor.com/")
 					.link= image_tag "back.png"
 
 %script(type='text/x-handlebars' data-template-name='vehicles')
 	= hb 'each vehicle in controller.filteredContent' do
-		= hb 'if isStartOfRow cols=2' do
-			<div class="row">
-		= hb "link-to 'vehicle' vehicle.id" do
-			.small-12.large-4.columns.left
-				.vehicle_index_instance
-					.make_model= hb 'vehicle.makeModel'
-					.photo
-						%img.main_image{ bind: {src: "vehicle.top_photo_url"} }
-					.new_used
-						.inner{bind: {class: 'vehicle.is_used:used:new'}}= hb 'vehicle.condition_string'
-					.msrp.text= hb 'vehicle.msrpAsDollar'
-					.price.text= hb 'vehicle.priceAsDollar'
-					.sopy.text= render "shared/trunc_copy"
-		= hb 'if isEndOfRow cols=2' do
-			</div>
+		<div class="row hide-for-small">
+		.small-12.columns
+			.vehicle_index_instance
+				.row
+					= hb "link-to 'gallery' vehicle.id" do
+						.large-3.columns
+							.photo
+								%img.main_image{ bind: {src: "vehicle.top_photo_url"} }
+					= hb "link-to 'vehicle' vehicle.id" do
+						.large-3.columns
+							.new_used
+								.inner{bind: {class: 'vehicle.is_used:used:new'}}= hb 'vehicle.condition_string'
+							.make_model= hb 'vehicle.makeModel'
+							.text= hb 'vehicle.mileage_string'
+							.text= hb 'vehicle.color_string'
+							.text= hb 'vehicle.passenger_string'
+							.text= hb 'vehicle.pkg_string'
+							.msrp.text= hb 'vehicle.msrpAsDollar'
+							.price.text= hb 'vehicle.priceAsDollar'
+					= hb "link-to 'vehicle' vehicle.id" do
+						.large-6.columns
+							.make_model Dealer Notes
+							.sopy.text= hb 'vehicle.copy'
+		</div>
+		<div class="row show-for-small">
+		.small-12.columns
+			.vehicle_index_instance
+				.row
+					.small-12.columns
+						.make_model= hb 'vehicle.makeModel'
+						.row
+							.small-8.columns.small-centered
+								.photo
+									%img.main_image{ bind: {src: "vehicle.top_photo_url"} }
+						.new_used
+							.inner{bind: {class: 'vehicle.is_used:used:new'}}= hb 'vehicle.condition_string'
+						.msrp.text= hb 'vehicle.msrpAsDollar'
+						.price.text= hb 'vehicle.priceAsDollar'
+					.instance_actions
+						= hb "link-to 'gallery' vehicle.id" do
+							%button Gallery
+						= hb "link-to 'vehicle' vehicle.id" do
+							%button Details
+		</div>
 
 %script(type='text/x-handlebars' data-template-name='vehicle')
 	= hb 'each photo in vehicle_photos' do
@@ -136,16 +147,44 @@
 					.photo_gallery
 						.royalSlider.rsDefault
 		.small-12.large-4.columns.vehicle_show_details
-			.title= hb 'makeModel'
-			.text= hb 'new_used_string'
-			.text= hb 'mileage_string'
-			.text= hb 'stock_number_string'
-			.text= hb 'vin_string'
-			.text= hb 'color_string'
-			.text= hb 'passenger_string'
-			.text= hb 'pkg_string'
-			.price= hb 'priceAsDollarSikpPrefix'
+			.row
+				.small-12.columns
+					.title= hb 'makeModel'
+					.text= hb 'new_used_string'
+					.text= hb 'mileage_string'
+					.text= hb 'stock_number_string'
+					.text= hb 'vin_string'
+					.text= hb 'color_string'
+					.text= hb 'passenger_string'
+					.text= hb 'pkg_string'
+					.price= hb 'priceAsDollarSikpPrefix'
 	.row
-		.small-12.columns	
+		.small-12.columns.vehicle_show_details
+			.title Dealer Notes
 			%p= render "shared/full_copy"
 
+%script(type='text/x-handlebars' data-template-name='gallery')
+	= hb 'each photo in vehicle_photos' do
+		%gallery_image{ bind: {src: "photo.large_url", rstmb: "photo.thumb_url" }} 
+	.row.vehicle_show
+		.small-12.large-8.columns
+			.row
+				.small-12.columns
+					.photo_gallery
+						.royalSlider.rsDefault
+		.small-12.large-4.columns.vehicle_show_details
+			.row
+				.small-12.columns
+					.title= hb 'makeModel'
+					.text= hb 'new_used_string'
+					.text= hb 'mileage_string'
+					.text= hb 'stock_number_string'
+					.text= hb 'vin_string'
+					.text= hb 'color_string'
+					.text= hb 'passenger_string'
+					.text= hb 'pkg_string'
+					.price= hb 'priceAsDollarSikpPrefix'
+	.row
+		.small-12.columns.vehicle_show_details
+			.title Dealer Notes
+			%p= render "shared/full_copy"
