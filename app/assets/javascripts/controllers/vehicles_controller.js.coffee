@@ -1,6 +1,6 @@
 UvdV1.VehiclesController = Ember.ArrayController.extend(
 	conditionToFilterFor: "BOTH"
-	dollarMax: 50000
+	dollarMax: 60000
 	numberOfPassengers: "ALL"
 	typeOfVehicle: null
 
