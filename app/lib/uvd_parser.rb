@@ -84,10 +84,9 @@ module UvdParser
 		def build_vehicle_photos
 			puts "Executing build photos"
 			session = GoogleFetcher::session
-			root_folder_name = (Rails.env == "production") ? "UVD" : "UVD"
-			images_folder_name =  (Rails.env == "production") ? "Vehicle Pictures" : "Vehicle Pictures"
+			root_folder_name = "Vehicle Pictures"
 			root_folder = session.collection_by_title(root_folder_name)
-			images_folder = root_folder.subcollection_by_title(images_folder_name)
+			images_folder = root_folder
 			images_folder.files.each do |vechicle_image_folder|
 				puts "Now in #{vechicle_image_folder.title}"
 				vehicle_stock_code = vechicle_image_folder.title.split(" - ").first.strip

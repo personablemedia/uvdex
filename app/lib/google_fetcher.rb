@@ -18,15 +18,15 @@ module GoogleFetcher
 		end
 
 		def app_login
-			Rails.env == "production" ? "tyrel@thetyrelcorporation.com" : "tyrel@thetyrelcorporation.com"
+			"heath@rostmotor.com"
 		end
 
 		def app_password
-			Rails.env == "production" ? "GA_BuddhA024878" : "GA_BuddhA024878"
+			"Tbird1955"
 		end
 
 		def app_file_key
-			Rails.env == "production" ? "12k78BnyWkGCo59-11g_WLCKskagR5Zc8-tT6WDhwuY8" : "12k78BnyWkGCo59-11g_WLCKskagR5Zc8-tT6WDhwuY8"
+			"12k78BnyWkGCo59-11g_WLCKskagR5Zc8-tT6WDhwuY8"
 		end
 
 		def car_array
