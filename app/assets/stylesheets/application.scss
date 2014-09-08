@@ -337,3 +337,16 @@ div#header_head {
 		}
 	}
 }
+
+.hand {
+	&:hover {
+		cursor: pointer;
+	}
+}
+
+.favs {
+	position: absolute;
+	&.big {
+		right: 20px;
+	}
+}

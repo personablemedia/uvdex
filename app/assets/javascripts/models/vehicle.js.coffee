@@ -1,14 +1,14 @@
 UvdV1.Vehicle = DS.Model.extend(
 	stock: DS.attr('string')
 	new_used: DS.attr('string')
-	year: DS.attr('string')
+	year: DS.attr('number')
 	sold: DS.attr('string')
 	model: DS.attr('string')
 	features: DS.attr('string')
 	color: DS.attr('string')
 	vin: DS.attr('string')
 	scheduled: DS.attr('string')
-	price: DS.attr('string')
+	price: DS.attr('number')
 	msrp: DS.attr('string')
 	condition: DS.attr('string')
 	passengers: DS.attr('number')
@@ -26,6 +26,7 @@ UvdV1.Vehicle = DS.Model.extend(
 	published: DS.attr('string')
 	vehicle_photos: DS.hasMany('vehicle_photo')
 	car_truck: DS.attr('string')
+	is_favorited: DS.attr('boolean')
 
 	featuresArray: (->
 		@get('features')
@@ -99,4 +100,5 @@ UvdV1.Vehicle = DS.Model.extend(
 		else
 			"New"
 	).property('is_used')
+
 )

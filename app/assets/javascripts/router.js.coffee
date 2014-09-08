@@ -19,7 +19,6 @@ UvdV1.VehicleRoute = Ember.Route.extend(
 	model: (params) ->
 		@store.find('vehicle', params.vehicle_id)
 )
-
 UvdV1.GalleryRoute = Ember.Route.extend(
 	model: (params) ->
 		@store.find('vehicle', params.vehicle_id)

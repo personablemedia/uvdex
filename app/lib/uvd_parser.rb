@@ -90,8 +90,6 @@ module UvdParser
 			images_folder.files.each do |vechicle_image_folder|
 				puts "Now in #{vechicle_image_folder.title}"
 				vehicle_stock_code = vechicle_image_folder.title.split(" - ").first.strip
-				is_default = vechicle_image_folder.title.split(" - ").last.strip =~ /d/i ? true : false
-				puts is_default ? "Image is default" : "Image is not default"
 				vehicle = Vehicle.find_by( stock: vehicle_stock_code )
 				if vehicle
 					puts "Now in vehicle #{vehicle.id}"
@@ -103,6 +101,7 @@ module UvdParser
 							begin
 								puts "Atempting Save #{photo.title}"
 								p = VehiclePhoto.new
+								p.default = photo.title.split("_").last.strip =~ /d/i ? true : false
 								p.vehicle_id = vehicle.id
 								p.google_drive_file_name = photo.title
 								p.photo = StringIO.new(photo.download_to_string)

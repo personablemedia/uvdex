@@ -5,6 +5,7 @@
 #= require jquery.truncate
 #= require jquery.royalslider.min
 #= require jquery.sticky
+#= require jquery.cookie.js
 #= require uvdlib
 #= require_self
 #= require ./store
@@ -15,7 +16,9 @@
 #= require ./router
 
 # for more details see: http://emberjs.com/guides/application/
-window.UvdV1 = Ember.Application.create()
+window.UvdV1 = Ember.Application.create(
+	LOG_TRANSITIONS: true
+)
 
 DS.ActiveModelAdapter.reopen(
   namespace: 'api/v1'

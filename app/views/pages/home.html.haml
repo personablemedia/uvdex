@@ -89,9 +89,12 @@
 					.link= image_tag "mail.png"
 				%a#footer_back_link(href="http://rostmotor.com/")
 					.link= image_tag "back.png"
+				.link.hand{ _action: "toggleFilterForFavorites" }
+					%img{ bind: {src: 'favoritesFooterImage'}}
+
 
 %script(type='text/x-handlebars' data-template-name='vehicles')
-	= hb 'each vehicle in controller.filteredContent' do
+	= hb 'each vehicle in controller.filteredContent itemController="car"' do
 		<div class="row hide-for-small">
 		.small-12.columns
 			.vehicle_index_instance
@@ -111,16 +114,17 @@
 							.text= hb 'vehicle.pkg_string'
 							.msrp.text= hb 'vehicle.msrpAsDollar'
 							.price.text= hb 'vehicle.priceAsDollar'
-					= hb "link-to 'vehicle' vehicle.id" do
-						.large-6.columns
-							.make_model Dealer Notes
-							.sopy.text= hb 'vehicle.copy'
+					.large-6.columns
+						%img.favs.big{ bind: {src: 'toggleFavoritesImageUrl'}, _action: "toggleFavorite"}
+						.make_model Dealer Notes
+						.sopy.text= hb 'vehicle.copy'
 		</div>
 		<div class="row show-for-small">
 		.small-12.columns
 			.vehicle_index_instance
 				.row
 					.small-12.columns
+						%img.favs.big{ bind: {src: 'toggleFavoritesImageUrl'}, _action: "toggleFavorite"}
 						.make_model= hb 'vehicle.makeModel'
 						.row
 							.small-8.columns.small-centered

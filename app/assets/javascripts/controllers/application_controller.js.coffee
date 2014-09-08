@@ -3,6 +3,11 @@ UvdV1.ApplicationController = Ember.Controller.extend(
 
 	maxPrice: 60000
 
+	filterForFavorites: false
+
+	favoritesFooterImage: "/assets/favorite.png"
+
+
 	maxPriceDollarString: ( ->
 		currentPrice = parseFloat(@get('maxPrice'))
 		if currentPrice == 60000
@@ -16,9 +21,23 @@ UvdV1.ApplicationController = Ember.Controller.extend(
 			@get('controllers.vehicles').set('conditionToFilterFor', condition)
 		setCarTypeFilter: (v_type) ->
 			@get('controllers.vehicles').set('typeOfVehicle', v_type)
+		toggleFilterForFavorites: ->
+			oldVal = @get('filterForFavorites')
+			if oldVal
+				@set('filterForFavorites', false)
+			else
+				@set('filterForFavorites', true)
 
 	maxPriceChanged: (->
 		@get('controllers.vehicles').set('dollarMax', @get('maxPrice'))
 	).observes('maxPrice')
+
+	filterForFavoritesDidChange: (->
+		@get('controllers.vehicles').set('filterForFavorites', @get('filterForFavorites'))
+		if @get('filterForFavorites')
+			@set('favoritesFooterImage', "/assets/favorite_engaged.png")
+		else
+			@set('favoritesFooterImage', "/assets/favorite.png")
+	).observes('filterForFavorites')
 
 )
