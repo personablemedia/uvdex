@@ -5,7 +5,7 @@ UvdV1.ApplicationController = Ember.Controller.extend(
 
 	filterForFavorites: false
 
-	favoritesFooterImage: "/assets/favorite.png"
+	favoritesFooterImage: "/favorite.png"
 
 
 	maxPriceDollarString: ( ->
@@ -35,9 +35,9 @@ UvdV1.ApplicationController = Ember.Controller.extend(
 	filterForFavoritesDidChange: (->
 		@get('controllers.vehicles').set('filterForFavorites', @get('filterForFavorites'))
 		if @get('filterForFavorites')
-			@set('favoritesFooterImage', "/assets/favorite_engaged.png")
+			@set('favoritesFooterImage', "/favorite_engaged.png")
 		else
-			@set('favoritesFooterImage', "/assets/favorite.png")
+			@set('favoritesFooterImage', "/favorite.png")
 	).observes('filterForFavorites')
 
 )

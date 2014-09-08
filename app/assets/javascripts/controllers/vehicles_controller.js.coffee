@@ -52,9 +52,9 @@ UvdV1.VehiclesController = Ember.ArrayController.extend(
 UvdV1.CarController = Ember.ObjectController.extend(
 	toggleFavoritesImageUrl: (->
 		if @get('is_favorited')
-			"/assets/favorite_on.png"
+			"/favorite_on.png"
 		else
-			"/assets/favorite_off.png"
+			"/favorite_off.png"
 	).property('is_favorited')
 	actions:
 		toggleFavorite: ->
