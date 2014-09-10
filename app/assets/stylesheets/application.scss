@@ -4,6 +4,11 @@
 
 $header_height: 243px;
 $header_height_small: 70px;
+
+.hidden {
+	display: none;
+}
+
 header {
 	background-color: #F5F5F5;
 	&.show-for-small {

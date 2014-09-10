@@ -13,6 +13,7 @@ UvdV1.ApplicationView = Ember.View.extend(
 
 UvdV1.VehiclesView = Ember.View.extend(
 	didInsertElement: ->
+		$("#footer_toggle_favorites_filter").click() if window.favoritesFilterEngaged
 		$("#footer_back_link").attr('href', "http://rostmotor.com/")
 )
 

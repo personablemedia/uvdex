@@ -49,12 +49,45 @@ UvdV1.VehiclesController = Ember.ArrayController.extend(
 	).observes('model.isLoaded')
 )
 
+UvdV1.VehicleController = Ember.ObjectController.extend(
+	mobileFavoritesText: (->
+		if @get('is_favorited')
+			"Remove From Favorites"
+		else
+			"Add To Favorites"
+	).property('is_favorited')
+	actions:
+		toggleFavorite: ->
+			v = @get('model')
+			vehicle_id = v.get('id')
+			old_cookie = $.cookie('favorites')
+			old_cookie ||= ""
+			old_cookie = old_cookie.split(':')
+			if v.get('is_favorited')
+				v.set('is_favorited', false)
+				new_cookie = []
+				$.each( old_cookie, (i,e) ->
+					new_cookie.push(e) unless e == vehicle_id
+				)
+				$.cookie('favorites', new_cookie.join(':'))
+			else
+				v.set('is_favorited', true)
+				old_cookie.push(vehicle_id)
+				$.cookie('favorites', old_cookie.join(':'))
+)
+
 UvdV1.CarController = Ember.ObjectController.extend(
 	toggleFavoritesImageUrl: (->
 		if @get('is_favorited')
 			"/favorite_on.png"
 		else
 			"/favorite_off.png"
+	).property('is_favorited')
+	mobileFavoritesText: (->
+		if @get('is_favorited')
+			"Remove From Favorites"
+		else
+			"Add To Favorites"
 	).property('is_favorited')
 	actions:
 		toggleFavorite: ->

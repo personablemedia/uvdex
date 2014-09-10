@@ -40,7 +40,7 @@
 					.row
 						.small-12.columns.budget_filter
 							%span.low $10K
-							= hb "input type='range' min=10000 max=60000 step=5000 valueBinding='maxPrice'"
+							= hb "input type='range' min=10000 max=60000 step=1000 valueBinding='maxPrice'"
 							%span.high $60K
 	%header.show-for-small.fixed
 		.row.show-for-small#small_header
@@ -87,9 +87,11 @@
 					.link= image_tag "phone.png"
 				%a(href="mailto:josh@rostmotor.com")
 					.link= image_tag "mail.png"
-				%a#footer_back_link(href="http://rostmotor.com/")
+				%a.hidden#footer_back_link(href="http://rostmotor.com/")
 					.link= image_tag "back.png"
-				.link.hand{ _action: "toggleFilterForFavorites" }
+				%a#footer_back_link(href="http://rostmotor.com/"){ _action: "footerBackButton" }
+					.link= image_tag "back.png"
+				.link.hand#footer_toggle_favorites_filter{ _action: "toggleFilterForFavorites" }
 					%img{ bind: {src: 'favoritesFooterImage'}}
 
 
@@ -124,7 +126,6 @@
 			.vehicle_index_instance
 				.row
 					.small-12.columns
-						%img.favs.big{ bind: {src: 'toggleFavoritesImageUrl'}, _action: "toggleFavorite"}
 						.make_model= hb 'vehicle.makeModel'
 						.row
 							.small-8.columns.small-centered
@@ -139,6 +140,10 @@
 							%button Gallery
 						= hb "link-to 'vehicle' vehicle.id" do
 							%button Details
+					.row
+						.small-12.columns
+							%button{ _action: "toggleFavorite" }
+								{{ mobileFavoritesText }}
 		</div>
 
 %script(type='text/x-handlebars' data-template-name='vehicle')
@@ -162,6 +167,9 @@
 					.text= hb 'passenger_string'
 					.text= hb 'pkg_string'
 					.price= hb 'priceAsDollarSikpPrefix'
+					%button{ _action: "toggleFavorite" }
+						{{ mobileFavoritesText }}
+					
 	.row
 		.small-12.columns.vehicle_show_details
 			.title Dealer Notes

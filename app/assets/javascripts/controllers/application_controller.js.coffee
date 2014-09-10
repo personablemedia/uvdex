@@ -27,6 +27,16 @@ UvdV1.ApplicationController = Ember.Controller.extend(
 				@set('filterForFavorites', false)
 			else
 				@set('filterForFavorites', true)
+			@transitionTo('vehicles')
+		footerBackButton: ( ->
+			if @get('currentPath') == "vehicles"
+				if @get('filterForFavorites')
+					@set('filterForFavorites', false)
+				else
+					window.location.href = 'http://rostmotor.com/'
+			else
+				@transitionTo('vehicles')
+		)
 
 	maxPriceChanged: (->
 		@get('controllers.vehicles').set('dollarMax', @get('maxPrice'))
