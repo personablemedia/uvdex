@@ -126,6 +126,7 @@
 			.vehicle_index_instance
 				.row
 					.small-12.columns
+						%img.favs.big{ bind: {src: 'toggleFavoritesImageUrl'}, _action: "toggleFavorite"}
 						.make_model= hb 'vehicle.makeModel'
 						.row
 							.small-8.columns.small-centered
@@ -140,10 +141,10 @@
 							%button Gallery
 						= hb "link-to 'vehicle' vehicle.id" do
 							%button Details
-					.row
-						.small-12.columns
-							%button{ _action: "toggleFavorite" }
-								{{ mobileFavoritesText }}
+					-# .row
+					-# 	.small-12.columns
+					-# 		%button{ _action: "toggleFavorite" }
+					-# 			{{ mobileFavoritesText }}
 		</div>
 
 %script(type='text/x-handlebars' data-template-name='vehicle')
@@ -167,8 +168,13 @@
 					.text= hb 'passenger_string'
 					.text= hb 'pkg_string'
 					.price= hb 'priceAsDollarSikpPrefix'
-					%button{ _action: "toggleFavorite" }
-						{{ mobileFavoritesText }}
+					= hb 'if isNotFavorite' do
+						%button#toggle_favorites_on_show_page{ _action: "toggleFavorite" }
+							{{ mobileFavoritesText }}
+					= hb 'if is_favorited' do
+						= link_to "tel:7124693383" do
+							%button#toggle_favorites_on_show_page Call (712) 469-3383
+						
 					
 	.row
 		.small-12.columns.vehicle_show_details

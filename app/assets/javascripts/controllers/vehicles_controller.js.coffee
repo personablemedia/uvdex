@@ -56,6 +56,12 @@ UvdV1.VehicleController = Ember.ObjectController.extend(
 		else
 			"Add To Favorites"
 	).property('is_favorited')
+	isNotFavorite: (->
+		if @get('is_favorited')
+			return false
+		else
+			return true
+	).property('is_favorited')
 	actions:
 		toggleFavorite: ->
 			v = @get('model')

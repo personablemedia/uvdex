@@ -62,6 +62,10 @@ header {
 	}
 }
 
+#toggle_favorites_on_show_page {
+	margin-top: 10px;
+}
+
 main {
 	padding-top: 20px;
 	@media only screen and (max-width: 40em) {
@@ -80,6 +84,10 @@ a {
 	margin-bottom: 20px;
 	text-align: center;
 	.make_model {
+		@media only screen and (max-width: 40em) { 
+			padding-left: 27px;
+			padding-right: 27px;
+		}
 		text-align: center;
 		font-size: 20px;
 		font-weight: bold;
