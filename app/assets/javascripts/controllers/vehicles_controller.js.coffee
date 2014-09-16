@@ -82,6 +82,46 @@ UvdV1.VehicleController = Ember.ObjectController.extend(
 				$.cookie('favorites', old_cookie.join(':'))
 )
 
+UvdV1.GalleryController = Ember.ObjectController.extend(
+	mobileFavoritesText: (->
+		if @get('is_favorited')
+			"Remove From Favorites"
+		else
+			"Add To Favorites"
+	).property('is_favorited')
+	isNotFavorite: (->
+		if @get('is_favorited')
+			return false
+		else
+			return true
+	).property('is_favorited')
+	actions:
+		toggleFavorite: ->
+			v = @get('model')
+			vehicle_id = v.get('id')
+			old_cookie = $.cookie('favorites')
+			old_cookie ||= ""
+			old_cookie = old_cookie.split(':')
+			if v.get('is_favorited')
+				v.set('is_favorited', false)
+				new_cookie = []
+				$.each( old_cookie, (i,e) ->
+					new_cookie.push(e) unless e == vehicle_id
+				)
+				$.cookie('favorites', new_cookie.join(':'))
+			else
+				v.set('is_favorited', true)
+				old_cookie.push(vehicle_id)
+				$.cookie('favorites', old_cookie.join(':'))
+	didInsertElement: ->
+		$(".royalSlider").royalSlider(
+			autoScaleSlider: true,
+			thumbs:
+				spacing: 10,
+				arrowsAutoHide: true
+		)
+)
+
 UvdV1.CarController = Ember.ObjectController.extend(
 	toggleFavoritesImageUrl: (->
 		if @get('is_favorited')
@@ -117,12 +157,3 @@ UvdV1.CarController = Ember.ObjectController.extend(
 )
 
 
-UvdV1.GalleryController = Ember.ObjectController.extend(
-	didInsertElement: ->
-		$(".royalSlider").royalSlider(
-			autoScaleSlider: true,
-			thumbs:
-				spacing: 10,
-				arrowsAutoHide: true
-		)
-)

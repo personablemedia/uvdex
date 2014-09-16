@@ -202,6 +202,12 @@
 					.text= hb 'passenger_string'
 					.text= hb 'pkg_string'
 					.price= hb 'priceAsDollarSikpPrefix'
+					= hb 'if isNotFavorite' do
+						%button#toggle_favorites_on_show_page{ _action: "toggleFavorite" }
+							{{ mobileFavoritesText }}
+					= hb 'if is_favorited' do
+						= link_to "tel:7124693383" do
+							%button#toggle_favorites_on_show_page Call (712) 469-3383
 	.row
 		.small-12.columns.vehicle_show_details
 			.title Dealer Notes
